@@ -8,53 +8,71 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         /* Apply Inter font globally */
         body {
             font-family: 'Inter', sans-serif;
         }
+        /* Subtle background animation */
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
     </style>
     <script>
         // Optional: Tailwind Custom Configuration (if needed)
-        // tailwind.config = {
-        //   theme: {
-        //     extend: {
-        //       colors: {
-        //         // custom colors
-        //       }
-        //     }
-        //   }
-        // }
+        tailwind.config = {
+          theme: {
+            extend: {
+              animation: {
+                gradient: 'gradientBG 15s ease infinite',
+              },
+              keyframes: {
+                 gradientBG: {
+                    '0%, 100%': { backgroundPosition: '0% 50%' },
+                    '50%': { backgroundPosition: '100% 50%' },
+                 }
+              }
+            }
+          }
+        }
     </script>
 </head>
-<body class="bg-gray-100 flex items-center justify-center min-h-screen p-4">
+<body class="bg-gradient-to-r from-gray-100 via-gray-50 to-blue-50 flex items-center justify-center min-h-screen p-4 sm:p-6 lg:p-8 animate-gradient">
 
-    <div class="bg-white shadow-lg rounded-lg p-8 md:p-12 max-w-2xl w-full text-center border border-gray-200">
+    <div class="bg-white shadow-xl rounded-xl p-8 sm:p-10 md:p-14 max-w-3xl w-full text-center border border-gray-200/80 transition-shadow duration-300 hover:shadow-2xl">
 
-        <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-2">
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-gray-900 mb-2 tracking-tight">
             Eric Reber
         </h1>
 
-        <h2 class="text-xl md:text-2xl font-medium text-gray-600 mb-6">
-            Engineering Lead and Solutions Architect 
+        <h2 class="text-xl sm:text-2xl md:text-3xl font-medium text-blue-700 mb-8">
+            Senior Technical Lead & Software Architect
         </h2>
 
-        <p class="text-gray-700 text-base md:text-lg mb-8 leading-relaxed">
-            Welcome, this page serves primarily as a professional point of contact.
+        <hr class="w-1/4 mx-auto border-gray-300 mb-8">
+
+        <p class="text-gray-700 text-base sm:text-lg md:text-xl mb-10 leading-relaxed">
+            Welcome. This space serves as a professional touchpoint and contact hub.
         </p>
 
-        <div class="contact-info mt-8">
-            <p class="text-gray-700 text-base md:text-lg mb-2">
+        <div class="contact-info mt-10">
+            <p class="text-gray-600 text-base md:text-lg mb-3">
                 Get in touch:
             </p>
             <a href="mailto:eric@ereber.com"
-               class="text-blue-600 hover:text-blue-800 hover:underline text-lg md:text-xl font-medium break-words">
+               class="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 hover:underline text-lg md:text-xl font-semibold break-words transition-colors duration-200 group">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-500 group-hover:text-blue-700 transition-colors duration-200">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
                 eric@ereber.com
             </a>
         </div>
 
-        <div class="footer mt-12 text-sm text-gray-400">
+        <div class="footer mt-16 text-sm text-gray-500">
             &copy; <script>document.write(new Date().getFullYear())</script> ereber.com
         </div>
 
